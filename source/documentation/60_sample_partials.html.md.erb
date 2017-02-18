@@ -1,0 +1,56 @@
+---
+title:     Sample Partials
+id:        partials
+blurb:     A look at the included sample partials available with <code>middleman-pagegroups</code>.
+layout:    template-logo-medium
+navigator: true
+---
+
+# <%= current_page.data.title %>
+
+Although `middleman-pagegroups` has a useful set of [helpers](helpers), you can
+use its sample partials instead. This gives you the obvious ability to customize
+them to suit your own needs.
+
+For convenience you can find them in this sample project’s `source/partials/`
+directory, or you can generate them on demand if `middleman-pagegroups` gem is
+installed:
+
+~~~ bash
+middleman-pagegroups partials <directory>
+~~~
+
+If you don’t specify a `<directory`> then the files will be placed into your
+current working directory.
+
+## The partials
+
+The partials are named identically to the [output helpers of the same name]
+(helpers), and they work identically and take the same optional `locals`
+parameters. For details of these partials, the refer to the to
+[Helpers](helpers) section.
+
+For reference, the list of partials is below:
+
+- `_nav_breadcrumbs.haml`
+- `_nav_breadcrumbs_alt.haml`
+- `_nav_brethren_index.haml`
+- `_nav_brethren.haml`
+- `_nav_legitimate_children.haml`
+- `_nav_prev_next.haml`
+- `_nav_toc_index.haml`
+
+As per standard **Middleman** conventions, partials’ names begin with an
+underscore to prevent the partial file _per se_ from being output in the build;
+it is not necessary to include the underscore (or the file extension) when using
+the `partial` helper. For example:
+
+~~~ erb
+<%%= partial 'partials/nav_breadcrumbs' %>
+~~~
+
+Middleman geek knowledge: when you generate partials using the
+`middleman-pagegroups partials` command, it’s not just a file copy. The partials
+are generated from the same source code that is used by the helpers, except for
+`_nav_toc_index.haml` which has some tricky recursion going on.
+{:.note}
